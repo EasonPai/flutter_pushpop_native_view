@@ -23,8 +23,7 @@
 
     // embed FlutterViewController in container UINavigationController programmatically
     
-    UIViewController *flutterViewController = [[FlutterViewController alloc] init];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:flutterViewController];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
