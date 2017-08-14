@@ -1,4 +1,4 @@
-name: platform_channel
+name: flutter_pushpop_native_view
 
 dependencies:
   flutter:
@@ -8,7 +8,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_driver:
-    path: ../../sdk/flutter/packages/flutter_driver
+    path: ../../../sdk/flutter/packages/flutter_driver
 
 flutter:
   uses-material-design: true

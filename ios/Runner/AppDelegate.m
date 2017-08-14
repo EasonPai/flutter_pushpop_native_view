@@ -41,6 +41,9 @@
             
             NativeViewController *nativeViewController = [[NativeViewController alloc] init];
             [self.navigationController pushViewController:nativeViewController animated:true];
+//
+//            NativeViewController *nativeViewController = [controller.storyboard instantiateViewControllerWithIdentifier:@"NativeViewController"];
+//            [self.navigationController pushViewController:nativeViewController animated:YES];
             
         } else {
             result(FlutterMethodNotImplemented);
