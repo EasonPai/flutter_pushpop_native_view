@@ -21,14 +21,14 @@
   FlutterViewController* controller =
       (FlutterViewController*)self.window.rootViewController;
 
-    // embed FlutterViewController in container UINavigationController programmatically
+    /// embed FlutterViewController in container UINavigationController programmatically
     
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.navigationController;
-    [self.window makeKeyAndVisible];
+//    [self.window makeKeyAndVisible];
     
-    // push and pop view controll
+    /// push and pop view controll
     
     FlutterMethodChannel* pushAndPopViewChannel = [FlutterMethodChannel
                                             methodChannelWithName:@"samples.flutter.io/pushAndPopView"
@@ -39,8 +39,8 @@
             
             result(@("view_a"));
             
-            UIViewController *viewController = [[UIViewController alloc] init];
-            [self.navigationController pushViewController:viewController animated:true];
+            NativeViewController *nativeViewController = [[NativeViewController alloc] init];
+            [self.navigationController pushViewController:nativeViewController animated:true];
             
         } else {
             result(FlutterMethodNotImplemented);
