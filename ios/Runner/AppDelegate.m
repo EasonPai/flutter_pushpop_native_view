@@ -7,6 +7,10 @@
 #import "GeneratedPluginRegistrant.h"
 #import "Runner-Swift.h"
 
+@interface AppDelegate()
+@property (nonatomic, strong) UINavigationController *navigationController;
+@end
+
 @implementation AppDelegate {
   FlutterEventSink _eventSink;
 }
@@ -17,6 +21,14 @@
   FlutterViewController* controller =
       (FlutterViewController*)self.window.rootViewController;
 
+    // embed FlutterViewController in container UINavigationController programmatically
+    
+    UIViewController *flutterViewController = [[FlutterViewController alloc] init];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:flutterViewController];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = self.navigationController;
+    [self.window makeKeyAndVisible];
+    
     // push and pop view controll
     
     FlutterMethodChannel* pushAndPopViewChannel = [FlutterMethodChannel
@@ -27,6 +39,10 @@
         if ([@"view_a" isEqualToString:call.method]) {
             
             result(@("view_a"));
+            
+            UIViewController *viewController = [[UIViewController alloc] init];
+            [self.navigationController pushViewController:viewController animated:true];
+            
         } else {
             result(FlutterMethodNotImplemented);
         }
