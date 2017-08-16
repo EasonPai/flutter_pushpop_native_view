@@ -17,23 +17,18 @@
 
 - (BOOL)application:(UIApplication*)application
     didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
+    
+    
   [GeneratedPluginRegistrant registerWithRegistry:self];
   FlutterViewController* controller =
       (FlutterViewController*)self.window.rootViewController;
-
-    /// embed FlutterViewController in container UINavigationController programmatically
-    
-//    self.navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    self.window.rootViewController = self.navigationController;
-//    [self.window makeKeyAndVisible];
     
     /// push and pop view controll
     
-    FlutterMethodChannel* pushAndPopViewChannel = [FlutterMethodChannel
-                                            methodChannelWithName:@"samples.flutter.io/pushAndPopView"
+    FlutterMethodChannel* nativeCallChannel = [FlutterMethodChannel
+                                            methodChannelWithName:@"samples.flutter.io/nativecall"
                                             binaryMessenger:controller];
-    [pushAndPopViewChannel setMethodCallHandler:^(FlutterMethodCall* call,
+    [nativeCallChannel setMethodCallHandler:^(FlutterMethodCall* call,
                                            FlutterResult result) {
         
         NativeViewController *nativeView = [[NativeViewController alloc] init];
@@ -43,9 +38,9 @@
             NSString *helloResult = [nativeView sayHello :@"Eason"];
             result(helloResult);
         }
-        else if ([@"view_a" isEqualToString:call.method]) {
+        else if ([@"push_pop_view" isEqualToString:call.method]) {
             
-            result(@("view_a"));
+            result(@("push_pop_view"));
             
             NSString * storyboardName = @"Main";
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];

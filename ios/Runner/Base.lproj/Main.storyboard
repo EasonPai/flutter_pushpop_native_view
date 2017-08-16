@@ -22,6 +22,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="rNx-7b-5Ab" kind="showDetail" id="Ws0-E5-AO8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -38,11 +41,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ool-iK-WDr">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATc-vc-bHB">
                                 <rect key="frame" x="128" y="263" width="65" height="43"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="2ES-Z3-AO6"/>
-                                    <constraint firstAttribute="height" constant="43" id="dmW-6f-b9m"/>
+                                    <constraint firstAttribute="height" constant="43" id="GKD-DZ-fNS"/>
+                                    <constraint firstAttribute="width" constant="65" id="O2P-SH-EIa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
                                 <state key="normal" title="OK">
@@ -50,25 +53,26 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="dismiss" destination="rNx-7b-5Ab" eventType="touchUpInside" id="g1W-jG-ysb"/>
+                                    <action selector="completed" destination="rNx-7b-5Ab" eventType="touchUpInside" id="fmH-CI-G4r"/>
+                                    <action selector="dismiss" destination="rNx-7b-5Ab" eventType="touchUpInside" id="WoD-Bd-5kY"/>
+                                    <action selector="onCompleted:" destination="rNx-7b-5Ab" eventType="touchUpInside" id="j8E-CN-FjD"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="ool-iK-WDr" firstAttribute="centerY" secondItem="hmI-H7-ZV2" secondAttribute="centerY" id="ESD-Iz-ihk"/>
-                            <constraint firstAttribute="centerX" secondItem="ool-iK-WDr" secondAttribute="centerX" id="e8c-mR-8pM"/>
-                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="9De-sK-ePq" appends="YES" id="K0p-JY-G77"/>
                         </connections>
                     </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" id="iLW-Zp-01X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjR-xA-JoV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="9De-sK-ePq"/>
             </objects>
-            <point key="canvasLocation" x="780" y="120"/>
+            <point key="canvasLocation" x="744" y="33"/>
         </scene>
     </scenes>
 </document>

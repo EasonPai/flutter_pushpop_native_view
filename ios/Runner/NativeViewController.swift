@@ -12,7 +12,13 @@ class NativeViewController: UIViewController {
         
     }
     
+
+    @IBAction func onCompleted(_ sender: UIButton) {
+        print("onCompleted");
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
+        
         
     }
     
@@ -24,7 +30,7 @@ class NativeViewController: UIViewController {
     func pushView(){
         print("native view");
     }
-    
+
     
     /**
      *    dismiss this view controller

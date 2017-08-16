@@ -18,12 +18,13 @@ class _PlatformChannelState extends State<PlatformChannel> {
   static const EventChannel eventChannel =
       const EventChannel('samples.flutter.io/charging');
 
-  static const MethodChannel pushAndPopViewChannel =
-      const MethodChannel('samples.flutter.io/pushAndPopView');
+  static const MethodChannel nativeCallChannel =
+      const MethodChannel('samples.flutter.io/nativecall');
 
 
   int pushCount = 0;
-  String _nativeInfo = 'Push and Pop for 0 Times';
+  String _sayHelloInfo = '';
+  String _pushAndPopNativeViewInfo = 'Push and Pop for 0 Times';
 
   String _batteryLevel = 'Battery level: unknown.';
   String _chargingStatus = 'Battery status: unknown.';
@@ -42,20 +43,33 @@ class _PlatformChannelState extends State<PlatformChannel> {
   }
 
   Future<Null> _pushAndPopNativeView(String viewId) async {
-    String nativeInfo;
+    String info;
     try {
-      nativeInfo = await pushAndPopViewChannel.invokeMethod(viewId);
+      info = await nativeCallChannel.invokeMethod("push_pop_view", viewId);
 
       pushCount++;
 
     } on PlatformException {
-      nativeInfo = "Failed to push native view.";
+      info = "Failed to push native view.";
     }
 
-    print("pushInfo = ${nativeInfo}");
+    print("pushInfo = ${info}");
 
     setState(() {
-      _nativeInfo = 'Push and Pop for ${pushCount} Times';
+      _pushAndPopNativeViewInfo = 'Push and Pop for ${pushCount} Times';
+    });
+  }
+
+  Future<Null> _sayHello() async {
+    String info;
+    try {
+      info = await nativeCallChannel.invokeMethod("sayHello");
+    } on PlatformException {
+      info = "Failed to call sayHello";
+    }
+
+    setState(() {
+      _sayHelloInfo = '${info}';
     });
   }
 
@@ -107,7 +121,26 @@ class _PlatformChannelState extends State<PlatformChannel> {
             new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                new Text(_nativeInfo),
+                new Text(_sayHelloInfo),
+                new Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: new RaisedButton(
+                    child: const Text('Say Hello'),
+                    onPressed: (){
+                      _sayHello();
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        new Column(
+          children: <Widget>[
+            new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Text(_pushAndPopNativeViewInfo),
                 new Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: new RaisedButton(
