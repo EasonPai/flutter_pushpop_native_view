@@ -7,9 +7,9 @@
 #import "GeneratedPluginRegistrant.h"
 #import "Runner-Swift.h"
 
-@interface AppDelegate()
-@property (nonatomic, strong) UINavigationController *navigationController;
-@end
+//@interface AppDelegate()
+//@property (nonatomic, strong) UINavigationController *navigationController;
+//@end
 
 @implementation AppDelegate {
   FlutterEventSink _eventSink;
@@ -23,9 +23,9 @@
 
     /// embed FlutterViewController in container UINavigationController programmatically
     
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+//    self.navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = self.navigationController;
+//    self.window.rootViewController = self.navigationController;
 //    [self.window makeKeyAndVisible];
     
     /// push and pop view controll
@@ -47,11 +47,11 @@
             
             result(@("view_a"));
             
-            
-            [self.navigationController pushViewController:nativeView animated:true];
-//
-//            NativeViewController *nativeViewController = [controller.storyboard instantiateViewControllerWithIdentifier:@"NativeViewController"];
-//            [self.navigationController pushViewController:nativeViewController animated:YES];
+            NSString * storyboardName = @"Main";
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+            UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"NativeViewController"];
+            [controller presentViewController:vc animated:YES completion:nil];
+
             
         } else {
             result(FlutterMethodNotImplemented);
