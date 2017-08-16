@@ -35,12 +35,20 @@
                                             binaryMessenger:controller];
     [pushAndPopViewChannel setMethodCallHandler:^(FlutterMethodCall* call,
                                            FlutterResult result) {
-        if ([@"view_a" isEqualToString:call.method]) {
+        
+        NativeViewController *nativeView = [[NativeViewController alloc] init];
+        
+        if ([@"sayHello" isEqualToString:call.method]) {
+            
+            NSString *helloResult = [nativeView sayHello :@"Eason"];
+            result(helloResult);
+        }
+        else if ([@"view_a" isEqualToString:call.method]) {
             
             result(@("view_a"));
             
-            NativeViewController *nativeViewController = [[NativeViewController alloc] init];
-            [self.navigationController pushViewController:nativeViewController animated:true];
+            
+            [self.navigationController pushViewController:nativeView animated:true];
 //
 //            NativeViewController *nativeViewController = [controller.storyboard instantiateViewControllerWithIdentifier:@"NativeViewController"];
 //            [self.navigationController pushViewController:nativeViewController animated:YES];
