@@ -13,10 +13,10 @@ class NativeViewController: UIViewController {
     }
     
 
-    @IBAction func onCompleted(_ sender: UIButton) {
-        print("onCompleted");
+        
+    @IBAction func back(_ sender: Any) {
+        self.performSegue(withIdentifier: "back", sender: self)
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         
         
