@@ -7,9 +7,10 @@
 #import "GeneratedPluginRegistrant.h"
 #import "Runner-Swift.h"
 
-//@interface AppDelegate()
-//@property (nonatomic, strong) UINavigationController *navigationController;
-//@end
+/// NavigationController solution -------------
+@interface AppDelegate()
+@property (nonatomic, strong) UINavigationController *navigationController;
+@end
 
 @implementation AppDelegate {
   FlutterEventSink _eventSink;
@@ -22,6 +23,14 @@
   [GeneratedPluginRegistrant registerWithRegistry:self];
   FlutterViewController* controller =
       (FlutterViewController*)self.window.rootViewController;
+    
+    /// NavigationController solution -------------
+    /// embed FlutterViewController in container UINavigationController programmatically
+    
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+    //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = self.navigationController;
+    //    [self.window makeKeyAndVisible];
     
     /// push and pop view controll
     
@@ -42,11 +51,17 @@
             
             result(@("push_pop_view"));
             
-            NSString * storyboardName = @"Main";
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-            UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"NativeViewController"];
-            [controller presentViewController:vc animated:YES completion:nil];
+            
+            /// PresentViewController solution -------------
+            
+//            NSString * storyboardName = @"Main";
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+//            UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"NativeViewController"];
+//            [controller presentViewController:vc animated:YES completion:nil];
 
+            /// NavigationController solution -------------
+            
+            [self.navigationController pushViewController:nativeView animated:true];
             
         } else {
             result(FlutterMethodNotImplemented);
