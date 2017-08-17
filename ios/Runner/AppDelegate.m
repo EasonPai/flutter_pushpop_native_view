@@ -68,15 +68,15 @@
             
             /// PresentViewController solution -------------
             
-//            NSString * storyboardName = @"Main";
-//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-//            UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"NativeViewController"];
+            NSString * storyboardName = @"Main";
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+            UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"NativeViewController"];
 //            [controller presentViewController:vc animated:YES completion:nil];
 
             /// NavigationController solution -------------
             
-//            [self.navigationController pushViewController:nativeView animated:true];
-            [self.navigationController presentModalViewController:nativeView animated:true];
+            [self.navigationController pushViewController:vc animated:true];
+//            [self.navigationController presentModalViewController:vc animated:true];
             
             
         } else {

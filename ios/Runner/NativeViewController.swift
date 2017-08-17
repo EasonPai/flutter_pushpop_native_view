@@ -9,17 +9,15 @@ class NativeViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
 
         
     @IBAction func back(_ sender: Any) {
-        self.performSegue(withIdentifier: "back", sender: self)
+        navigationController?.popViewController(animated: true)
     }
+    
     override func viewDidAppear(_ animated: Bool) {
-        
-        
     }
     
     func sayHello(_ personName: String) -> String {
