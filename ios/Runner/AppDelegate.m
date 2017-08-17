@@ -21,18 +21,33 @@
     
     
   [GeneratedPluginRegistrant registerWithRegistry:self];
-  FlutterViewController* controller =
-      (FlutterViewController*)self.window.rootViewController;
+  
     
-    /// NavigationController solution -------------
-    /// embed FlutterViewController in container UINavigationController programmatically
+    /// --------------------------------------------
+    /// Navigation
+    /// --------------------------------------------
+    
+    // embed FlutterViewController in container UINavigationController programmatically
+  
+    // init views
+    
+    FlutterViewController *controller = (FlutterViewController*)self.window.rootViewController;
+    NativeViewController *nativeView = [[NativeViewController alloc] init];
+    
+    // setup navigator
     
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-    //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    self.navigationController.viewControllers = @[controller, nativeView];
+
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.navigationController;
-    //    [self.window makeKeyAndVisible];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.window makeKeyAndVisible];
     
-    /// push and pop view controll
+    
+    /// --------------------------------------------
+    /// Communication Interface
+    /// --------------------------------------------
     
     FlutterMethodChannel* nativeCallChannel = [FlutterMethodChannel
                                             methodChannelWithName:@"samples.flutter.io/nativecall"
@@ -40,7 +55,6 @@
     [nativeCallChannel setMethodCallHandler:^(FlutterMethodCall* call,
                                            FlutterResult result) {
         
-        NativeViewController *nativeView = [[NativeViewController alloc] init];
         
         if ([@"sayHello" isEqualToString:call.method]) {
             
@@ -61,7 +75,9 @@
 
             /// NavigationController solution -------------
             
-            [self.navigationController pushViewController:nativeView animated:true];
+//            [self.navigationController pushViewController:nativeView animated:true];
+            [self.navigationController presentModalViewController:nativeView animated:true];
+            
             
         } else {
             result(FlutterMethodNotImplemented);
