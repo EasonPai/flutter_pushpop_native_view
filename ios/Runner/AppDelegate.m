@@ -37,7 +37,6 @@
     // setup navigator
     
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-//    self.navigationController.viewControllers = @[controller, nativeView];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.navigationController;
@@ -65,19 +64,11 @@
             
             result(@("push_pop_view"));
             
-            
-            /// PresentViewController solution -------------
-            
             NSString * storyboardName = @"Main";
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-            UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"NativeViewController"];
-//            [controller presentViewController:vc animated:YES completion:nil];
-
-            /// NavigationController solution -------------
-            
-            [self.navigationController pushViewController:vc animated:true];
+            UIViewController * view_from_board = [storyboard instantiateViewControllerWithIdentifier:@"NativeViewController"];
+            [self.navigationController pushViewController:view_from_board animated:true];
 //            [self.navigationController presentModalViewController:vc animated:true];
-            
             
         } else {
             result(FlutterMethodNotImplemented);
