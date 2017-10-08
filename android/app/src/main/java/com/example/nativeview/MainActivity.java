@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package com.example.platformchannel;
+package com.example.nativeview;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,7 +39,7 @@ public class MainActivity extends FlutterActivity {
                   Intent intent = new Intent(getApplicationContext(), NativeViewActivity.class);
                   startActivity(intent);
 
-//                  result.success("true");
+                  result.success("true");
                 }
 
 
