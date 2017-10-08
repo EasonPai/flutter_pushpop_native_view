@@ -17,10 +17,8 @@ class _PlatformChannelState extends State<PlatformChannel> {
       const MethodChannel('samples.flutter.io/battery');
   static const EventChannel eventChannel =
       const EventChannel('samples.flutter.io/charging');
-
   static const MethodChannel nativeCallChannel =
       const MethodChannel('samples.flutter.io/nativecall');
-
 
   int pushCount = 0;
   String _sayHelloInfo = '';

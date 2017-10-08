@@ -64,7 +64,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjR-xA-JoV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="9De-sK-ePq"/>
             </objects>
-            <point key="canvasLocation" x="696" y="33"/>
+            <point key="canvasLocation" x="765" y="120"/>
         </scene>
     </scenes>
 </document>
